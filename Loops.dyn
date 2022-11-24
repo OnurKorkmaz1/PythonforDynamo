@@ -1,0 +1,575 @@
+{
+  "Uuid": "4aca6bf1-7d88-480a-b0b4-c7c65df2cb2d",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "Loops",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Point": {
+        "Key": "Autodesk.DesignScript.Geometry.Point",
+        "Value": "ProtoGeometry.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nimport random\r\n\r\noutput = []\r\nfor i in range(15):\r\n\tintvalue = random.randint(1,20)\r\n\tif intvalue%2 ==0:\r\n\t\toutput.append(intvalue)\r\nOUT = output",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "0638fb4924054117ab3ffe948155f11d",
+      "Inputs": [
+        {
+          "Id": "366151e427b54354951d287e5b21f6e6",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1557eb2200694157935831d9d5fbb657",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n\r\nOUT = 4%2",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "8a97a61a4359450189a3c29a79ece2c7",
+      "Inputs": [
+        {
+          "Id": "ee7d7645ffec4016934f50a9638023d9",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8c1f368a35454f9cb5a8798ad0d33af9",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nimport random\r\n\r\noutput = []\r\ncount = 0\r\nwhile count < 10:\r\n\tintvalue = random.randint(1,20)\r\n\tif intvalue%2 ==0:\r\n\t\toutput.append(intvalue)\r\n\t\tcount +=1\r\nOUT = output",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "ef44a3397f1246769f037ee375520c92",
+      "Inputs": [
+        {
+          "Id": "4e284b560c074ae0aeb86c462204c4bd",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "68782928cffc4778a66910189ba79442",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nimport random\r\n\r\nrandom.seed(IN[0])\r\n\r\nintvalue = random.randint(1,20)\r\nwhile intvalue%2 != 0:\r\n\tintvalue = random.randint(1,20)\r\n\r\n\t\r\nOUT = intvalue",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "359bdd9a3a1e40e894ed18f86c4785d8",
+      "Inputs": [
+        {
+          "Id": "4a712f50640c4d0f8813b79366b158e5",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9e6379e110e94e1abfd994d12ed0d081",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.IntegerSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Integer",
+      "InputValue": 1,
+      "MaximumValue": 20,
+      "MinimumValue": 0,
+      "StepValue": 1,
+      "Id": "0462b791396f4870988458bc28571770",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ecb2172b4d684a928d0d17eb78104d68",
+          "Name": "",
+          "Description": "Int64",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces integer values."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nimport random\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this line\r\noutput = []\r\n\r\nfor pt in range(10):\r\n\tintvalue = random.randint(0,20)\r\n\tif intvalue%2 ==0:\r\n\t\toutput.append(intvalue)\r\n\t\t\r\n# Assign your output to the OUT variable.\r\nOUT = output",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "109fdaab24d44efd8a5153a021ea3732",
+      "Inputs": [
+        {
+          "Id": "86aeb4d3141f465d8f466ec2cfdf3bda",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ee20dc7671a44931a0c0b37e28988ca3",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nimport random\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this line\r\noutput = []\r\n\r\nfor pt in range(10):\r\n\tintvalue = random.randint(0,20)\r\n\tif intvalue%2 ==0:\r\n\t\toutput.append(intvalue)\r\n\t\t\r\n# Assign your output to the OUT variable.\r\nOUT = output",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "9e17017610854daa93744f8ae355d0bd",
+      "Inputs": [
+        {
+          "Id": "29d0f17bcb014c67a88e7e93227a7e2e",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "928ac77b27b84a0886141552bb00f1e9",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this lineo\r\noutput = []\r\n\r\nfor val in IN[0]:\r\n\tif val == 8 or val == 10:\r\n\t\tcontinue\r\n\toutput.append(val)\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = output",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "60ed17697679479ca81c8f3e73c752c3",
+      "Inputs": [
+        {
+          "Id": "a2a7944c188741d6888b3f1d3b3c0251",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3c4eee3e46384d2d9980385ce681c9ee",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this lineo\r\noutput = []\r\n\r\nfor val in IN[0]:\r\n\tif val == 14:\r\n\t\tbreak\r\n\toutput.append(val)\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = output",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "59706485a7fa42db928e0ec0d0d3f5fb",
+      "Inputs": [
+        {
+          "Id": "544b164d1a8645c19b45dd3097b7b57c",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3bd5ceb2c5304502b7ab16e1e527e238",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nimport random\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this line\r\noutput = []\r\n\r\nfor pt in range(10):\r\n\tintvalue = random.randint(0,20)\r\n\tif intvalue%2 ==0:\r\n\t\toutput.append(intvalue)\r\n\t\t\r\n# Assign your output to the OUT variable.\r\nOUT = output",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "d2be0255dd95410dbfd7f29046e6120c",
+      "Inputs": [
+        {
+          "Id": "f671347c2cf44dc58a4b74123c253c74",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "208ab893dde74dcbb8472be3247b4a3e",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "ecb2172b4d684a928d0d17eb78104d68",
+      "End": "4a712f50640c4d0f8813b79366b158e5",
+      "Id": "8b481badbc14472dbadf939a13318a70"
+    },
+    {
+      "Start": "ee20dc7671a44931a0c0b37e28988ca3",
+      "End": "a2a7944c188741d6888b3f1d3b3c0251",
+      "Id": "8df47422a0c747d0b52d2660227a0f0c"
+    },
+    {
+      "Start": "208ab893dde74dcbb8472be3247b4a3e",
+      "End": "544b164d1a8645c19b45dd3097b7b57c",
+      "Id": "f610d1b8d9e940e0a8eaa3d186846ce4"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.10.1.3976",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -11.254462242126465,
+      "EyeY": 52.568035125732422,
+      "EyeZ": 54.779403686523438,
+      "LookX": 6.2544622421264648,
+      "LookY": -41.568035125732422,
+      "LookZ": -62.779403686523438,
+      "UpX": 0.035526987165212631,
+      "UpY": 0.93358045816421509,
+      "UpZ": -0.35660243034362793
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "0638fb4924054117ab3ffe948155f11d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -202.614122515879,
+        "Y": -23.3260844106058
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "8a97a61a4359450189a3c29a79ece2c7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 148.69843862621224,
+        "Y": -58.706537804173763
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "ef44a3397f1246769f037ee375520c92",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -21.051011870061103,
+        "Y": -25.546478112245836
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "359bdd9a3a1e40e894ed18f86c4785d8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 680.90181830907147,
+        "Y": -18.097550744041371
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Integer Slider",
+        "Id": "0462b791396f4870988458bc28571770",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 334.72672051624727,
+        "Y": -14.265039923193683
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "109fdaab24d44efd8a5153a021ea3732",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -270.88746976061429,
+        "Y": 287.4560276394671
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "9e17017610854daa93744f8ae355d0bd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 403.98902694163365,
+        "Y": -111.18729406456225
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "60ed17697679479ca81c8f3e73c752c3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -99.0984396529118,
+        "Y": 287.2220013016256
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "59706485a7fa42db928e0ec0d0d3f5fb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 383.33219555053279,
+        "Y": 307.97234491692296
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "d2be0255dd95410dbfd7f29046e6120c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 153.58554371300858,
+        "Y": 296.61484690879962
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "b97287b7bffd45e2adaeef8ba377c2f2",
+        "Title": "FOR LOOP",
+        "Nodes": [
+          "0638fb4924054117ab3ffe948155f11d"
+        ],
+        "Left": -212.614122515879,
+        "Top": -119.72608441060581,
+        "Width": 144.8,
+        "Height": 201.0,
+        "FontSize": 36.0,
+        "InitialTop": -23.3260844106058,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 86.4,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "593c6afb24f94233963f26c75f588ca6",
+        "Title": "Remainder",
+        "Nodes": [
+          "8a97a61a4359450189a3c29a79ece2c7"
+        ],
+        "Left": 138.69843862621224,
+        "Top": -111.90653780417377,
+        "Width": 180.26666666666668,
+        "Height": 157.8,
+        "FontSize": 36.0,
+        "InitialTop": -58.706537804173763,
+        "InitialHeight": 145.00000000000006,
+        "TextblockHeight": 43.2,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "a1932bd89c09493b9f014ac85428694a",
+        "Title": "While Loop",
+        "Nodes": [
+          "ef44a3397f1246769f037ee375520c92"
+        ],
+        "Left": -31.051011870061103,
+        "Top": -121.94647811224584,
+        "Width": 144.8,
+        "Height": 201.0,
+        "FontSize": 36.0,
+        "InitialTop": -25.546478112245836,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 86.4,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "b59cf93919984a2a8f8c99b85d47cf63",
+        "Title": "While Loop 2",
+        "Nodes": [
+          "359bdd9a3a1e40e894ed18f86c4785d8"
+        ],
+        "Left": 670.90181830907147,
+        "Top": -114.49755074404138,
+        "Width": 144.79999999999995,
+        "Height": 201.0,
+        "FontSize": 36.0,
+        "InitialTop": -18.097550744041371,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 86.4,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "0f18550b611c456ba43524a719011496",
+        "Title": "Continue",
+        "Nodes": [
+          "60ed17697679479ca81c8f3e73c752c3"
+        ],
+        "Left": -109.09843965291179,
+        "Top": 234.02200130162561,
+        "Width": 154.25,
+        "Height": 157.8,
+        "FontSize": 36.0,
+        "InitialTop": 287.2220013016256,
+        "InitialHeight": 134.60000000000002,
+        "TextblockHeight": 43.2,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "6e67065e97ab479aa3d1fe0bfd98016c",
+        "Title": "Break\r\n",
+        "Nodes": [
+          "59706485a7fa42db928e0ec0d0d3f5fb"
+        ],
+        "Left": 373.33219555053279,
+        "Top": 211.57234491692296,
+        "Width": 144.8,
+        "Height": 200.99999999999997,
+        "FontSize": 36.0,
+        "InitialTop": 307.97234491692296,
+        "InitialHeight": 134.59999999999997,
+        "TextblockHeight": 86.4,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 564.264458693691,
+    "Y": 256.87541679607443,
+    "Zoom": 0.62114349977677963
+  }
+}

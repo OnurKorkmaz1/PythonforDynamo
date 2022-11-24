@@ -1,0 +1,273 @@
+{
+  "Uuid": "29e50086-6ee0-4e08-a0e1-9286a5ce27fd",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "16+Nested+Loops+02",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0..10;",
+      "Id": "3c5e632bce7043fdab1468f86a822e69",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "648289ca16bc478f9a760e2c01ad55e1",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0..6;",
+      "Id": "fd1b354c92a34e06b1019733a6f35c41",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b0773bc66f404d9a97c621b09ed434d4",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nx_Coordinate = IN[0]\r\ny_Coordinate = IN[1]\r\nz_Coordinate = IN[2]\r\n# Place your code below this line\r\nxOutput = []\r\nfor val1 in x_Coordinate:\r\n\tyOutput = []\r\n\tfor val2 in y_Coordinate:\r\n\t\tzOutput = []\r\n\t\tfor val3 in z_Coordinate:\r\n\t\t\tmyPoint = Point.ByCoordinates(val1,val2,val3)\r\n\t\t\tzOutput.append(myPoint)\r\n\t\tyOutput.append(zOutput)\r\n\txOutput.append(yOutput)\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = xOutput",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "1e109c2875fe48e6babe9f28fe259152",
+      "Inputs": [
+        {
+          "Id": "da33af32211646b092e8c2baa85bc39c",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f0be646a943b4125ae30f98ac87c2105",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3b09c38715044ca299c70a08b094885e",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f6a3af1bacd947d1aaf316dec9ab91c9",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0..2;",
+      "Id": "c162bad1ee0448e8adf1d99e118d0a87",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b41c5a6e3c154c418414666f76ad5a4d",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n\r\nx= IN[0]\r\n\r\noutput= []\r\nfor list1 in x:\r\n\toutput1 = []\r\n\tfor list2 in list1:\r\n\t  \toutput2 = []\r\n\t  \tfor list3 in list2:\r\n\t  \t\tmypoint = Point.ByCoordinates(list3.X,list3.Y,list3.Z +10)\r\n\t  \t\toutput2.append(mypoint)\r\n\t  \toutput1.append(output2)\r\n\toutput.append(output1)\r\n\r\n# Place your code below this line\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = output",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "e8053e986dfa4b42a707dfdf7936d035",
+      "Inputs": [
+        {
+          "Id": "966f9192b77243399bbc657dd6fc11c0",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3c57ac6944814a71affa1542e7d57636",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "648289ca16bc478f9a760e2c01ad55e1",
+      "End": "da33af32211646b092e8c2baa85bc39c",
+      "Id": "838551ad8bb0486690e79c7bc63dfe49"
+    },
+    {
+      "Start": "b0773bc66f404d9a97c621b09ed434d4",
+      "End": "f0be646a943b4125ae30f98ac87c2105",
+      "Id": "b850a5c36df64db7b01c09445c5e8762"
+    },
+    {
+      "Start": "f6a3af1bacd947d1aaf316dec9ab91c9",
+      "End": "966f9192b77243399bbc657dd6fc11c0",
+      "Id": "98ac6119d8ac4888af18acd323efd816"
+    },
+    {
+      "Start": "b41c5a6e3c154c418414666f76ad5a4d",
+      "End": "3b09c38715044ca299c70a08b094885e",
+      "Id": "c46f2677193d4d2ea0e7f95c2cd52c40"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.10.1.3976",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.022527694702148,
+      "EyeY": 23.482646942138672,
+      "EyeZ": 50.108879089355469,
+      "LookX": 12.022527694702148,
+      "LookY": -12.482646942138672,
+      "LookZ": -58.108879089355469,
+      "UpX": -0.001768045243807137,
+      "UpY": 0.99996191263198853,
+      "UpZ": 0.00854555144906044
+    },
+    "NodeViews": [
+      {
+        "Id": "3c5e632bce7043fdab1468f86a822e69",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -94.546439574148678,
+        "Y": -604.77433436546232
+      },
+      {
+        "Id": "fd1b354c92a34e06b1019733a6f35c41",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -124.28224995526529,
+        "Y": -445.3242470914762
+      },
+      {
+        "Id": "1e109c2875fe48e6babe9f28fe259152",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Generate Points",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 72.562849413718084,
+        "Y": -403.93791022985215
+      },
+      {
+        "Id": "c162bad1ee0448e8adf1d99e118d0a87",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -123.61751743698545,
+        "Y": -361.61533008983378
+      },
+      {
+        "Id": "e8053e986dfa4b42a707dfdf7936d035",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 389.37010576479804,
+        "Y": -410.44693379074658
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "27ff7584c035460698a22e6c21ed4f83",
+        "Title": "Changing values in nested list\r\n-- Dont lost the list hierarchy",
+        "Nodes": [],
+        "Left": 351.64754595289116,
+        "Top": -461.03157379970372,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 356.80009592259114,
+    "Y": 599.22028427927432,
+    "Zoom": 0.6841817081826258
+  }
+}

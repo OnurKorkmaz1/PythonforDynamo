@@ -1,0 +1,369 @@
+{
+  "Uuid": "29e50086-6ee0-4e08-a0e1-9286a5ce27fd",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "17 Try And Except",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0..10;",
+      "Id": "3c5e632bce7043fdab1468f86a822e69",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "648289ca16bc478f9a760e2c01ad55e1",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0..6;",
+      "Id": "fd1b354c92a34e06b1019733a6f35c41",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b0773bc66f404d9a97c621b09ed434d4",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nx_Coordinate = IN[0]\r\ny_Coordinate = IN[1]\r\nz_Coordinate = IN[2]\r\n# Place your code below this line\r\nxOutput = []\r\nfor val1 in x_Coordinate:\r\n\tyOutput = []\r\n\tfor val2 in y_Coordinate:\r\n\t\tzOutput = []\r\n\t\tfor val3 in z_Coordinate:\r\n\t\t\tmyPoint = Point.ByCoordinates(val1,val2,val3)\r\n\t\t\tzOutput.append(myPoint)\r\n\t\tyOutput.append(zOutput)\r\n\txOutput.append(yOutput)\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = xOutput",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "1e109c2875fe48e6babe9f28fe259152",
+      "Inputs": [
+        {
+          "Id": "da33af32211646b092e8c2baa85bc39c",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f0be646a943b4125ae30f98ac87c2105",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3b09c38715044ca299c70a08b094885e",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f6a3af1bacd947d1aaf316dec9ab91c9",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0..2;",
+      "Id": "c162bad1ee0448e8adf1d99e118d0a87",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b41c5a6e3c154c418414666f76ad5a4d",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\npointList = IN[0]\r\n\r\noutput = []\r\nfor ptLst1 in pointList:\r\n\toutput1 = []\r\n\tfor ptLst2 in ptLst1:\r\n\t\toutput2 =[]\r\n\t\tfor pt in ptLst2:\r\n\t\t\ttry:\r\n\t\t\t\tmyPoint = Point.ByCoordinates(pt.X,pt.Y,pt.Z + 10)\r\n\t\t\t\toutput2.append(myPoint)\r\n\t\t\texcept Exception, ex: \r\n\t\t\t\toutput2.append(ex)\r\n\t\toutput1.append(output2)\r\n\toutput.append(output1)\r\n# Assign your output to the OUT variable.\r\nOUT = output",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "28184b19b6bc45e58165b9828d201221",
+      "Inputs": [
+        {
+          "Id": "c5107ab3483f4ec6a67ef54fa9c2af86",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "96338c75753f401c863121dcc2e09f91",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n# Place your code below this line\r\npointList = IN[0]\r\npointList[1][1][1] = None\r\n# Assign your output to the OUT variable.\r\nOUT = pointList",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "eaeea8f4368042f68539f847140f8444",
+      "Inputs": [
+        {
+          "Id": "fa642267993c489fbf32b1fb236b251d",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "77d40d15814b4f789449d1ef152250cb",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\npointList = IN[0]\r\n\r\noutput = []\r\nfor ptLst1 in pointList:\r\n\toutput1 = []\r\n\tfor ptLst2 in ptLst1:\r\n\t\toutput2 =[]\r\n\t\tfor pt in ptLst2:\r\n\t\t\tmyPoint = Point.ByCoordinates(pt.X,pt.Y,pt.Z + 10)\r\n\t\t\toutput2.append(myPoint)\r\n\t\toutput1.append(output2)\r\n\toutput.append(output1)\r\n# Assign your output to the OUT variable.\r\nOUT = output",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "510aa7345f9549128645927a6e44bda8",
+      "Inputs": [
+        {
+          "Id": "693e6ee3f87b40a8a8f88b48d3c5b2d1",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3087994850874a7aade0196886329d8f",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "648289ca16bc478f9a760e2c01ad55e1",
+      "End": "da33af32211646b092e8c2baa85bc39c",
+      "Id": "838551ad8bb0486690e79c7bc63dfe49"
+    },
+    {
+      "Start": "b0773bc66f404d9a97c621b09ed434d4",
+      "End": "f0be646a943b4125ae30f98ac87c2105",
+      "Id": "b4ac350facc94d28aecfb078fe7d3966"
+    },
+    {
+      "Start": "f6a3af1bacd947d1aaf316dec9ab91c9",
+      "End": "fa642267993c489fbf32b1fb236b251d",
+      "Id": "aa6cdb177c754087975775f6bddf4d34"
+    },
+    {
+      "Start": "b41c5a6e3c154c418414666f76ad5a4d",
+      "End": "3b09c38715044ca299c70a08b094885e",
+      "Id": "fc53e000f03847c5837e1d3cdfe99e7f"
+    },
+    {
+      "Start": "77d40d15814b4f789449d1ef152250cb",
+      "End": "c5107ab3483f4ec6a67ef54fa9c2af86",
+      "Id": "12a9a97eb606414ba704f594ae74690a"
+    },
+    {
+      "Start": "77d40d15814b4f789449d1ef152250cb",
+      "End": "693e6ee3f87b40a8a8f88b48d3c5b2d1",
+      "Id": "8c4eeb2e86de413f8c636e7360b08681"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.0.5650",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.022527694702148,
+      "EyeY": 23.482646942138672,
+      "EyeZ": 50.108879089355469,
+      "LookX": 12.022527694702148,
+      "LookY": -12.482646942138672,
+      "LookZ": -58.108879089355469,
+      "UpX": -0.001768045243807137,
+      "UpY": 0.99996191263198853,
+      "UpZ": 0.00854555144906044
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "3c5e632bce7043fdab1468f86a822e69",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -114.97120018819641,
+        "Y": -871.45128542307316
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "fd1b354c92a34e06b1019733a6f35c41",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -122.74570518861441,
+        "Y": -793.27268555501541
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Generate Points",
+        "Id": "1e109c2875fe48e6babe9f28fe259152",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 11.21142712658542,
+        "Y": -867.35803002743432
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "c162bad1ee0448e8adf1d99e118d0a87",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -157.18854755508841,
+        "Y": -713.52787732086756
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Change Z of Points",
+        "Id": "28184b19b6bc45e58165b9828d201221",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 550.607458781606,
+        "Y": -1158.83386291209
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "eaeea8f4368042f68539f847140f8444",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 249.64339561403381,
+        "Y": -837.13955733471016
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Change Z of Points",
+        "Id": "510aa7345f9549128645927a6e44bda8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1025.9944692946237,
+        "Y": -993.26103660093213
+      }
+    ],
+    "Annotations": [],
+    "X": -50.4079407456079,
+    "Y": 1285.1042922134325,
+    "Zoom": 0.9844610594112656
+  }
+}
