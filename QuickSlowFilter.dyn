@@ -1,0 +1,124 @@
+{
+  "Uuid": "3c9d0464-8643-5ffe-96e5-ab1769818209",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "QuickSlowFilter",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\n\n#Import Revit Nodes\nclr.AddReference(\"RevitNodes\")\nimport Revit\nclr.ImportExtensions(Revit.Elements)\n\n# Import RevitAPI\nclr.AddReference(\"RevitAPI\")\nimport Autodesk\nfrom Autodesk.Revit.DB import *\n\n# Import DocumentManager and TransactionManager\nclr.AddReference(\"RevitServices\")\nfrom RevitServices.Persistence import DocumentManager\n\n#The inputs to this node will be stored as a list in the IN variables.\ndoc = DocumentManager.Instance.CurrentDBDocument\nfamily = UnwrapElement(IN[0])\n#Filtered Element Collector\ncollector = FilteredElementCollector(doc, doc.ActiveView.Id)\n#Quick Filter\n\nfilter = ElementCategoryFilter(BuiltInCategory.OST_Doors)\ndoors = collector.WherePasses(filter).ToElements()\n\n\n#Slow Filter\n\ninstancefilter =  FamilyInstanceFilter(doc,family.Id)\ndoorinstance   =  collector.OfCategory(BuiltInCategory.OST_Doors).WherePasses(instancefilter).ToElementIds()\n\n\n\n\n\n#Assign your output to the OUT variable.\nOUT = collector",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "b6f6a08ead4c4d7cb6c842db2f605dec",
+      "Inputs": [
+        {
+          "Id": "20447add1c154f8994f0c088a009ebb6",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e28886208da0479c9ac19b13397dcd5e",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.FamilyTypes, DSRevitNodesUI",
+      "SelectedIndex": 117,
+      "SelectedString": "M_Single-Flush:0762 x 2032mm",
+      "NodeType": "ExtensionNode",
+      "Id": "6191ca247a8c443a9406af16a3b9e294",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5794bb90a5aa4c7c90d14b7c9b415de0",
+          "Name": "Family Type",
+          "Description": "The selected Family Type",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "All family types available in the document."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "5794bb90a5aa4c7c90d14b7c9b415de0",
+      "End": "20447add1c154f8994f0c088a009ebb6",
+      "Id": "669a650e9309433e97cc33a3cfd0e732"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.10.1.3976",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -51.659137725830078,
+      "EyeY": 51.478866577148438,
+      "EyeZ": 94.434494018554688,
+      "LookX": 46.659137725830078,
+      "LookY": -40.478866577148438,
+      "LookZ": -102.43449401855469,
+      "UpX": 0.053388915956020355,
+      "UpY": 0.99167114496231079,
+      "UpZ": -0.11720891296863556
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "b6f6a08ead4c4d7cb6c842db2f605dec",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 134.77758889456481,
+        "Y": -551.89497788837878
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Family Types",
+        "Id": "6191ca247a8c443a9406af16a3b9e294",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -244.93888423351626,
+        "Y": -481.79718049061648
+      }
+    ],
+    "Annotations": [],
+    "X": 462.64368002073996,
+    "Y": 503.90825326363523,
+    "Zoom": 0.64320054867190368
+  }
+}
