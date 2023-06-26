@@ -1,0 +1,46 @@
+"""
+Create a simple Wall objects using python
+
+"""
+__author__ = 'Onur Korkmaz'
+
+"""
+Sample on how to create a Wall.
+Use this sample along with the Video on Youtube.
+"""
+
+import clr
+clr.AddReference("RevitNodes")
+import Revit
+clr.ImportExtensions(Revit.Elements)
+clr.AddReference("RevitServices")
+import RevitServices
+from RevitServices.Persistence import DocumentManager
+from RevitServices.Transactions import TransactionManager
+clr.AddReference('RevitAPI')
+from Autodesk.Revit.DB import *
+doc = DocumentManager.Instance.CurrentDBDocument
+
+#Dynamo input 
+Baselvl = UnwrapElement(IN[0])
+Toplvl = UnwrapElement(IN[1])
+WallType = UnwrapElement(IN[2])
+
+
+pt1 = XYZ(0, 0, 0)
+pt2 = XYZ(10, 0, 0)
+
+TransactionManager.Instance.EnsureInTransaction(doc)
+line = Line.CreateBound(pt1, pt2)
+wall = Wall.Create(doc, line, Baselvl.Id, False)
+
+
+wall.WallType = WallType
+
+TopCons = wall.get_Parameter(BuiltInParameter.WALL_HEIGHT_TYPE)
+
+TopCons.Set(Toplvl.Id)
+
+TransactionManager.Instance.TransactionTaskDone()
+
+OUT = wall
