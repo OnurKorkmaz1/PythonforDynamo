@@ -31,8 +31,9 @@ doc = DocumentManager.Instance.CurrentDBDocument
 uidoc=DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument
 
 
-Link_Instances = FilteredElementCollector(doc).OfClass(RevitLinkInstance)
+#Link_Instances = FilteredElementCollector(doc).OfClass(RevitLinkInstance)  // another method for getting link instances
 
+Link_Instances = FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_RvtLinks).WhereElementIsNotElementType().ToElements()
 Link_Document  = []
 Link_Name      = []
 Link_Path      = []
